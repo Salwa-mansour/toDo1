@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <h1 contenteditable="true">hi user</h1>
+        </header>
+        <main class="container">
+            <div class="category" data-category="">
+                <h1>To Day Tasks</h1>
+                <ul class="toDos">
+                    <li>
+                        <p>do this</p>
+                        <input type="checkbox" name="done" >
+                        <button class="delete">❌</button>
+                    </li>
+                   
+                </ul>
+                <div class="add-toDo ">
+                    <button id="add-task-btn" data-category data-index>➕ add task</button>
+                </div>
+                <dialog id="add-task" data-category="">
+                    <form method="dialog">
+                        <input type="text" placeholder="add a task">
+                        <button type="submit">add</button>
+                    </form>
+                </dialog>
+            </div>
+            <div class="add-category category">
+                <button id="add-category-btn">➕ add category</button>
+                <dialog id="add-category">
+                    <form method="dialog">
+                        <input type="text" placeholder="add category">
+                        <button type="submit">add</button>
+                    </form>
+                </dialog>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

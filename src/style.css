@@ -1,0 +1,72 @@
+*,
+*::after,
+*::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+   
+}
+:root{
+    --space-1:1rem;
+    --space-2:2rem;
+}
+ul{
+    list-style: none;
+}
+ul li{
+    padding: var(--space-1);
+}
+
+.page{
+    background-image: url('./images/14456042_5397807.jpg');
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-rows: 100px 1fr;
+    grid-template-areas:"header"
+                        "content";
+    max-width: 1200px;
+    margin: auto;
+    width: 90%;
+   
+}
+header{
+    grid-area: header;
+    padding: var(--space-1);
+    margin: var(--space-1);
+    display: flex;
+    align-items: center;
+}
+
+main{
+    grid-area: content;
+    padding: var(--space-1);
+}
+.container{
+    display: flex;
+    gap:var(--space-2) ;
+    overflow-x: scroll;
+}
+.category{
+    width: 300px;
+    padding: var(--space-1);
+ 
+}
+.category,
+header{
+      background-color: hsla(0, 0%, 100%, 0.8);
+    border-radius: 15px;
+    box-shadow: 1px 1px 10px gray; 
+}
+.toDos li{
+    display: flex;
+   gap: 5px;
+}
+.toDos li p{
+    flex: 1;
+}
+dialog::backdrop {
+    background-color: hsl(250, 100%, 50%, 0.25);
+  }
