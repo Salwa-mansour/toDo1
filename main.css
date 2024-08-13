@@ -1,0 +1,12 @@
+*,
+*::after,
+*::before{
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    outline: 1px solid red;
+}
+.page{
+    background-image: url(b984b1775e72af2a9264.jpg);
+}
