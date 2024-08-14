@@ -51,6 +51,7 @@ main{
 }
 .category{
     width: 300px;
+    min-width: 300px;
     padding: var(--space-1);
  
 }
@@ -69,4 +70,7 @@ header{
 }
 dialog::backdrop {
     background-color: hsl(250, 100%, 50%, 0.25);
+  }
+  .created-categories{
+    display: contents;
   }

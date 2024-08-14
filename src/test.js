@@ -1,5 +1,23 @@
+
 import './style.css';
 
+
+// generator for todos
+// generator for category
+// add items to array
+//populaote the array
+/*
+todo object
+text 
+done
+category
+maybe date
+
+cagtegory object 
+name
+
+
+*/
 const data = (function () {
     let tasks = [];
     let categories = [];
@@ -29,7 +47,6 @@ const data = (function () {
         addItem
     }
 })();
-
 const dataPopulator = (function(){
   
     function populaoteCategories(list,categories=[]){
@@ -55,24 +72,17 @@ const dataPopulator = (function(){
     `
         }).join('');
 
-    populaoteTasks(data.tasks,data.categories);
-
     }
-    function populaoteTasks(tasks,categories){
-        categories.forEach(category=>{
-            let list = document.querySelector(`div[data-category="${category.name}"] .toDos`);//DOM bended pad practice!
-            let listContent="";
-            tasks.filter((task)=>{
-               if(task.category === category.name){
-                listContent +=`
-                <li>
-                  <p>${task.text}</p>
-                  <input type="checkbox" name="done" >
-                  <button class="delete">❌</button>
-               </li>`
-               }
-            });
-            list.innerHTML = listContent;
+    function populaoteTasks(tasks){
+        tasks.forEAch(task=>{
+         const list = container.querySelector(`div[data-category="${task.category}"] .toDos`) 
+            list.innerHTML +=`
+              <li>
+                <p>${task.text}</p>
+                <input type="checkbox" name="done" >
+                <button class="delete">❌</button>
+             </li>`
+
         })
     }
 
@@ -81,10 +91,8 @@ const dataPopulator = (function(){
         populaoteTasks
     }
 })();
-
 const domController = (function () {
     const container = document.querySelector('#category-container');
-
     const addCategoryModal = container.querySelector('#add-category');
     const addCategoryForm = addCategoryModal.querySelector('form');
     const addCategoryBtn = container.querySelector('#add-category-btn');
@@ -100,7 +108,6 @@ const domController = (function () {
       data.addItem(data.categories,category);
       
       dataPopulator.populaoteCategories(categoriesList,data.categories);
-      this.reset();
     }
 
     function showTaskModel(e){
@@ -116,20 +123,12 @@ const domController = (function () {
             this.querySelector('input[type="text"]').value,
             this.querySelector('input[type="hidden"]').value
         )
-        this.reset();
         data.addItem(data.tasks,task);
-     
-        dataPopulator.populaoteTasks(data.tasks,data.categories);
-    }
-    function defualtCategories(){
-        const cagetory1=data.category('ToDayTasks');
-        data.addItem(data.categories,cagetory1);
-        dataPopulator.populaoteCategories(categoriesList,data.categories);
+        dataPopulator.populaoteTasks(data.tasks);
     }
     addCategoryBtn.addEventListener('click', () => {
         addCategoryModal.showModal()
     });
-    defualtCategories();
-    document.addEventListener('click',showTaskModel);
+    container.addEventListener('click',showTaskModel);
     addCategoryForm.addEventListener('submit',setCategory)
 })();
