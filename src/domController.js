@@ -10,7 +10,7 @@ import {
     populaoteCategories,
     populaoteTasks
 } from './Populator';
-
+import uniqid from 'uniqid';
 
 const domController = function () {
     const container = document.querySelector('#category-container');
@@ -25,7 +25,7 @@ const domController = function () {
 
 
     function setCategory() {
-        const categoryItem = category(this.querySelector('input[type="text"]').value);
+        const categoryItem = category(uniqid(),this.querySelector('input[type="text"]').value);
 
         addItem(categories, categoryItem);
 
@@ -44,6 +44,7 @@ const domController = function () {
 
     function setTask() {
         const task = toDo(
+            uniqid(),
             this.querySelector('input[type="text"]').value,
             this.querySelector('input[type="hidden"]').value
         )
@@ -54,7 +55,7 @@ const domController = function () {
     }
 
     function defualtCategories() {
-        const cagetory1 = category('ToDayTasks');
+        const cagetory1 = category(uniqid(),'ToDayTasks');
         addItem(categories, cagetory1);
         populaoteCategories(categoriesList, categories);
     }

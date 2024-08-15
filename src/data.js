@@ -1,16 +1,18 @@
 
     let tasks = [];
     let categories = [];
-    function toDo(text, category) {
+    function toDo(id,text, categoryId,done) {
         return {
+            id,
             text,
-            category,
+            categoryId,
             done: false
         }
     }
 
-    function category(name) {
+    function category(id,name) {
         return {
+            id,
             name
         }
     }
