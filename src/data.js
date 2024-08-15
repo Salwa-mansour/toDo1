@@ -1,6 +1,6 @@
 
-    let tasks = [];
-    let categories = [];
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    let categories = JSON.parse(localStorage.getItem('categories')) || [];
     function toDo(text, category) {
         return {
             text,

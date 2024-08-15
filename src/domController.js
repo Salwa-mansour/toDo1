@@ -28,7 +28,7 @@ const domController = function () {
         const categoryItem = category(this.querySelector('input[type="text"]').value);
 
         addItem(categories, categoryItem);
-
+        localStorage.setItem('categories', JSON.stringify(categories));
         populaoteCategories(categoriesList, categories);
         this.reset();
     }
@@ -49,7 +49,7 @@ const domController = function () {
         )
         this.reset();
         addItem(tasks, task);
-
+        localStorage.setItem('tasks', JSON.stringify(tasks));
         populaoteTasks(tasks, categories);
     }
 
