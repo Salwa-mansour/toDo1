@@ -1,7 +1,7 @@
 
     let tasks = [];
     let categories = [];
-    function toDo(id,text, categoryId,done) {
+    function toDo(text, category) {
         return {
             id,
             text,
