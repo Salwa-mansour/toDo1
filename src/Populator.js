@@ -22,6 +22,7 @@ import {
             <form method="dialog" >
                 <input type="hidden" value="${category.id}">
                 <input type="text" placeholder="add a task">
+                <input type="checkbox" name="done">
                 <button type="submit">add</button>
             </form>
         </dialog>
@@ -33,6 +34,7 @@ import {
 
     }
     function populaoteTasks(tasks,categories){
+        // console.log(tasks)
         categories.forEach(category=>{
             let list = document.querySelector(`div[data-category="${category.id}"] .toDos`);//DOM bended pad practice!
             let listContent="";
@@ -41,7 +43,7 @@ import {
                 listContent +=`
                 <li >
                   <p>${task.text}</p>
-                  <input type="checkbox" name="done" >
+                  <input type="checkbox" name="done" data-id="${task.id}"  ${task.done ? "checked" : ""} >
                   <button class="delete" data-id="${task.id}" >❌</button>
                </li>`
                }

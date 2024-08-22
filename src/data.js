@@ -1,12 +1,13 @@
 
-    let tasks = [];
-    let categories = [];
-    function toDo(text, category) {
+
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+let categories = JSON.parse(localStorage.getItem('categories')) || [];
+    function toDo(id,text, categoryId,done = false) {
         return {
             id,
             text,
             categoryId,
-            done: false
+            done
         }
     }
 
@@ -21,6 +22,30 @@
         arr.push(item);
     }
 
+    function removeItem(id){
+        
+        tasks = tasks.filter((item)=> {
+            return item.id !== id
+        })
+     
+    }
+    function changeDoneState(id,arr = tasks){
+        
+        arr = arr.map((item)=>{
+            if(item.id == id){
+         
+                item.done = !item.done;
+            }
+        })
+    }
+    function editItem(id ,newData,arr = tasks){
+       arr = arr.map((item)=>{
+        if(item.id == id){
+            item = newData;
+        }
+       })
+
+    }
     // return{
     //     toDo,
     //     category,
@@ -35,5 +60,8 @@ export {
         category,
         tasks,
         categories,
-        addItem
+        addItem,
+        removeItem,
+        changeDoneState,
+        editItem
         } ;

@@ -3,7 +3,10 @@ import {
     category,
     tasks,
     categories,
-    addItem
+    addItem,
+    removeItem,
+    changeDoneState,
+    editItem
 } from './data'
 
 import {
@@ -25,12 +28,12 @@ const domController = function () {
 
 
     function setCategory() {
-        const categoryItem = category(uniqid(),this.querySelector('input[type="text"]').value);
+        const categoryItem = category(uniqid(),addCategoryForm.querySelector('input[type="text"]').value);
 
         addItem(categories, categoryItem);
         localStorage.setItem('categories', JSON.stringify(categories));
         populaoteCategories(categoriesList, categories);
-        this.reset();
+        addCategoryForm.reset();
     }
 
     function showTaskModel(e) {
@@ -46,7 +49,8 @@ const domController = function () {
         const task = toDo(
             uniqid(),
             this.querySelector('input[type="text"]').value,
-            this.querySelector('input[type="hidden"]').value
+            this.querySelector('input[type="hidden"]').value,
+            this.querySelector('input[type="checkbox"]').checked
         )
         this.reset();
         addItem(tasks, task);
@@ -62,8 +66,36 @@ const domController = function () {
     addCategoryBtn.addEventListener('click', () => {
         addCategoryModal.showModal()
     });
+
+    function deleteItem(e){
+        
+        const id =e.target.dataset.id;
+        removeItem(id);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        populaoteTasks(tasks, categories);
+    }
+
+    function doneState(e){
+        const id  = e.target.dataset.id;
+     
+        changeDoneState(id);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        populaoteTasks(tasks, categories);
+    }
+
     defualtCategories();
-    document.addEventListener('click', showTaskModel);
+
+    container.addEventListener('click',(e)=>{
+        if(e.target.matches('.add-task-btn')){
+            showTaskModel(e);
+        }else if(e.target.matches('.delete')){
+            deleteItem(e);
+        }else if(e.target.matches('li input[name="done"]')){
+            
+            doneState(e);
+        }
+        
+    } );
     addCategoryForm.addEventListener('submit', setCategory)
 }
 

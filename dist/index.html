@@ -1,1 +1,51 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>to Do App</title><script defer="defer" src="runtime.bundle.js"></script><script defer="defer" src="main.bundle.js"></script><link href="main.css" rel="stylesheet"></head><body><div class="page"><header><h1 contenteditable="true">hi user</h1></header><main id="category-container" class="container"><div class="created-categories"></div><div class="add-category category"><button id="add-category-btn">➕ add category</button><dialog id="add-category"><form method="dialog"><input placeholder="add category"> <button type="submit">add</button></form></dialog></div></main></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to Do App</title>
+<script defer src="runtime.bundle.js"></script><script defer src="main.bundle.js"></script><link href="main.css" rel="stylesheet"></head>
+<body>
+    <div class="page">
+        <header>
+            <h1 contenteditable="true">hi user</h1>
+        </header>
+        <main id="category-container" class="container">
+            <!-- <div class="category" data-category="ToDayTasks">
+                <h1>To Day Tasks</h1>
+                <ul class="toDos">
+                    <li>
+                        <p>do this</p>
+                        <input type="checkbox" name="done" >
+                        <button class="delete">❌</button>
+                    </li>
+                   
+                </ul>
+                <div class="add-toDo ">
+                    <button class="add-task-btn" data-category="ToDayTasks" data-index>➕ add task</button>
+                </div>
+                <dialog class="add-task" data-category="ToDayTasks">
+                    <form method="dialog">
+                        <input type="hidden" value="ToDayTasks">
+                        <input type="text" placeholder="add a task">
+                        <button type="submit">add</button>
+                    </form>
+                </dialog>
+            </div> -->
+            <div class="created-categories">
+
+            </div>
+            <div class="add-category category">
+                <button id="add-category-btn">➕ add category</button>
+                <dialog id="add-category">
+                    <form method="dialog">
+                        <input type="text" placeholder="add category">
+                        
+                        <button type="submit">add</button>
+                    </form>
+                </dialog>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
