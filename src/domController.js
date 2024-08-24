@@ -13,7 +13,7 @@ import {
     populaoteCategories,
     populaoteTasks
 } from './Populator';
-import { editModal } from './htmlGenerator';
+import { editModal , detailModel } from './htmlGenerator';
 import uniqid from 'uniqid';
 
 const domController = function () {
@@ -86,7 +86,7 @@ const domController = function () {
     function editTask(e){
         
         const id  = e.target.dataset.id;   
-        console.log(e.target) 
+      
         editModal(id);
         const form = container.querySelector('.edit-task form');
        
@@ -106,6 +106,10 @@ const domController = function () {
        
 
     }
+    function detailTask(e){
+        const id = e.target.dataset.id
+        detailModel(id)
+    }
 
     defualtCategories();
 
@@ -118,6 +122,10 @@ const domController = function () {
             doneState(e);
         }else if(e.target.matches('li .edit')){
             editTask(e);
+        }else if(e.target.matches('li .details')){
+            detailTask(e);
+        }else if(e.target.matches('.close')){
+            container.removeChild(container.querySelector('.modal'))
         }
         
     } );
