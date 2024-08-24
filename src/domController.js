@@ -13,6 +13,7 @@ import {
     populaoteCategories,
     populaoteTasks
 } from './Populator';
+import { editModal } from './htmlGenerator';
 import uniqid from 'uniqid';
 
 const domController = function () {
@@ -82,6 +83,26 @@ const domController = function () {
         localStorage.setItem('tasks', JSON.stringify(tasks));
         populaoteTasks(tasks, categories);
     }
+    function editTask(e){
+        
+        const id  = e.target.dataset.id;    
+        editModal(id);
+        const form = container.querySelector('.edit-task form');
+       
+        form.addEventListener('submit',()=>{
+            const newData = toDo(
+                id,
+                form.querySelector('input[type="text"]').value,
+                form.querySelector('input[type="hidden"]').value,
+                form.querySelector('input[type="checkbox"]').checked
+            )
+            editItem(id,newData);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            populaoteTasks(tasks, categories);
+        })
+       
+
+    }
 
     defualtCategories();
 
@@ -90,9 +111,10 @@ const domController = function () {
             showTaskModel(e);
         }else if(e.target.matches('.delete')){
             deleteItem(e);
-        }else if(e.target.matches('li input[name="done"]')){
-            
+        }else if(e.target.matches('li input[name="done"]')){  
             doneState(e);
+        }else if(e.target.matches('li .edit')){
+            editTask(e);
         }
         
     } );

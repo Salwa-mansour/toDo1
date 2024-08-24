@@ -45,6 +45,8 @@ import {
                   <p>${task.text}</p>
                   <input type="checkbox" name="done" data-id="${task.id}"  ${task.done ? "checked" : ""} >
                   <button class="delete" data-id="${task.id}" >❌</button>
+                  <button class="edit" data-id="${task.id}" >🖊</button>
+                  <button class="details" data-id="${task.id}" >...</button>
                </li>`
                }
             });

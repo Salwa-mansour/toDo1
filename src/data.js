@@ -31,29 +31,27 @@ let categories = JSON.parse(localStorage.getItem('categories')) || [];
     }
     function changeDoneState(id,arr = tasks){
         
-        arr = arr.map((item)=>{
+        arr = arr.find((item)=>{
             if(item.id == id){
          
                 item.done = !item.done;
             }
         })
     }
-    function editItem(id ,newData,arr = tasks){
-       arr = arr.map((item)=>{
+    function editItem(id ,newData){
+      console.log(tasks)
+    tasks =  tasks.map((item)=>{
         if(item.id == id){
+            console.log(item)
             item = newData;
+            console.log(item)
+        }else{
+            return item;
         }
        })
-
+console.log(tasks)
     }
-    // return{
-    //     toDo,
-    //     category,
-    //    tasks,
-    //    categories,
-    //     addItem
-    // }
-
+  
 
 export {
         toDo,
