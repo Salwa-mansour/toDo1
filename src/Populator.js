@@ -34,7 +34,7 @@ import {
 
     }
     function populaoteTasks(tasks,categories){
-        // console.log(tasks)
+         console.table(tasks)
         categories.forEach(category=>{
             let list = document.querySelector(`div[data-category="${category.id}"] .toDos`);//DOM bended pad practice!
             let listContent="";

@@ -85,7 +85,8 @@ const domController = function () {
     }
     function editTask(e){
         
-        const id  = e.target.dataset.id;    
+        const id  = e.target.dataset.id;   
+        console.log(e.target) 
         editModal(id);
         const form = container.querySelector('.edit-task form');
        
@@ -96,9 +97,11 @@ const domController = function () {
                 form.querySelector('input[type="hidden"]').value,
                 form.querySelector('input[type="checkbox"]').checked
             )
+           
             editItem(id,newData);
             localStorage.setItem('tasks', JSON.stringify(tasks));
             populaoteTasks(tasks, categories);
+            container.removeChild(container.querySelector('.edit-task'))//get red of the model
         })
        
 

@@ -39,17 +39,17 @@ let categories = JSON.parse(localStorage.getItem('categories')) || [];
         })
     }
     function editItem(id ,newData){
-      console.log(tasks)
+  
     tasks =  tasks.map((item)=>{
         if(item.id == id){
-            console.log(item)
+         
             item = newData;
-            console.log(item)
-        }else{
-            return item;
+      
         }
+            return item;
+        
        })
-console.log(tasks)
+
     }
   
 
